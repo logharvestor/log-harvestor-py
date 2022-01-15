@@ -1,4 +1,4 @@
-"""Logger
+"""Forwarder
 """
 from configparser import ConfigParser
 from importlib import resources
@@ -8,7 +8,7 @@ __version__ = "1.0.0"
 
 # Read Config
 cfg = ConfigParser()
-with resources.path("logger", "config.cfg") as path:
+with resources.path("forwarder", "config.cfg") as path:
   cfg.read(str(path))
 
-API_URL = cfg.get("logger", "apiUrl")
+API_URL = cfg.get("forwarder", "apiUrl")
