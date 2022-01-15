@@ -5,7 +5,7 @@ from importlib import resources
 
 
 # Log Harvestor's Python Package (log-harvestor-py)
-__version__ = "0.0.2"
+__version__ = "0.0.3"
 
 # Read Config
 cfg = ConfigParser()
