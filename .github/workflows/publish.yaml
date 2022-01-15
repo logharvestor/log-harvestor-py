@@ -26,4 +26,4 @@ jobs:
         run: python -m build
 
       - name: 🚀 Publish to PyPI
-        run: python -m twine upload -r testpypi dist/* -u __token__ -p ${{ secrets.PYPI_TEST_API_TOKEN }} -v
+        run: python -m twine upload -r testpypi dist/* -u __token__ -p ${{secrets.PYPI_TEST_API_TOKEN}} --verbose             
