@@ -1,9 +1,9 @@
 from uuid import uuid4
 import requests
 
-from forwarder import API_URL
+from logharvestor import API_URL
 
-class Logger:
+class Forwarder:
     def __init__(self, token, api_url=API_URL, verbose=False):
         self.id = uuid4()
         self.token = token

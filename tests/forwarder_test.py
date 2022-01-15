@@ -1,8 +1,7 @@
 import pytest
 
-from forwarder.logger import Logger
-from forwarder import API_URL
-
+from logharvestor import API_URL
+from logharvestor.forwarder import Forwarder
 
 valid_token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6ImZvcndhcmRlciJ9.eyJfaWQiOiI2MTI4OTIwYjNjMzQyNTAwMjFkZGQyMTciLCJpYXQiOjE2MzAwNDg3ODN9.sb8lfpp01CC-y0T9Z5XiIEdy-JBeDHSBD8Gd05bZYaQ"
 valid_token_local = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6ImZvcndhcmRlciJ9.eyJfaWQiOiI2MDk5Mzg5Mjg4MWQ0MzAwMjkxNzY2MGUiLCJpYXQiOjE2Mjc3MzAzOTZ9.uEY-6s8hK8HX6qy-5Su8Esb-iRXewc9hXYhRLIlALCo"
@@ -18,20 +17,20 @@ Utility Function  - Send Log
 
 
 def send_log(type, msg, url=valid_api_url, token=valid_token, **kwargs):
-    lh = Logger(token=token, api_url=url)
+    lh = Forwarder(token=token, api_url=url)
     success, res = lh.log(type, msg)
     return success, res
 
 
 def test_connection_valid():
-    lh = Logger(token=valid_token, api_url=valid_api_url)
+    lh = Forwarder(token=valid_token, api_url=valid_api_url)
     success, res = lh.test_conn()
     print(res.content)
     assert success == True
 
 
 def test_connection_invalid():
-    lh = Logger(token=invalid_token, api_url=valid_api_url)
+    lh = Forwarder(token=invalid_token, api_url=valid_api_url)
     success, res = lh.test_conn()
     print(res.content)
     assert success == False
