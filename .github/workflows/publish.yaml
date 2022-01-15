@@ -17,8 +17,7 @@ jobs:
         with:
           python-version: '3.9'
       - name: ➕ Install Deps
-        run: python -m pip install --upgrade build
-        run: python -m pip install --upgrade twine
+        run: python -m pip install --upgrade build twine
       - name: ⚙️ Build
         run: python -m build
       - name: 🚀 Publish to PyPI
