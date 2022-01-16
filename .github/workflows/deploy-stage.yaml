@@ -1,13 +1,12 @@
-name: Publish-PyPI
+name: Deploy-Stage🔵
 
 on:
   push:
-    branches: 
-      - master
-
+    branches:
+      - stage
 jobs:
   build:
-    name: 🚀 Build
+    name: 🚀 Deploy to Staging
     runs-on: ubuntu-latest
     steps:
 
@@ -17,13 +16,17 @@ jobs:
       - name: ⌛Install Python
         uses: actions/setup-python@v2
         with:
-          python-version: '3.9'
+          python-version: '3.10'
 
       - name: ➕ Install Deps
-        run: python -m pip install --upgrade build twine
+        run: python -m pip install --upgrade build twine pytest
+
+      - name: 🧪 Test
+        run : python -m pytest -rx
 
       - name: ⚙️ Build
         run: python -m build
+
 
       - name: 🚀 Publish to PyPI
         run: python -m twine upload -r testpypi dist/* -u __token__ -p ${{secrets.PYPI_TEST_API_TOKEN}} --verbose             
