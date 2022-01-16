@@ -2,12 +2,11 @@ name: Publish-PyPI
 
 on:
   push:
-    branches: 
-      - master
-
+    branches:
+      - stage
 jobs:
   build:
-    name: 🚀 Build
+    name: 🚀 Build Staging
     runs-on: ubuntu-latest
     steps:
 
