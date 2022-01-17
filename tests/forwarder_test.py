@@ -14,22 +14,22 @@ invalid_api_url = "tcp://localhost:3001"
 Utility Function  - Send Log
 """
 
+lh = Forwarder(token=valid_token, api_url=valid_api_url, verbose=True)
 
-def send_log(type, msg, url=valid_api_url, token=valid_token, **kwargs):
-    lh = Forwarder(token=token, api_url=url)
+def send_log(type, msg):
     success, res = lh.log(type, msg)
     return success, res
 
 
 def test_connection_valid():
-    lh = Forwarder(token=valid_token, api_url=valid_api_url)
+    lh = Forwarder(token=valid_token, api_url=valid_api_url, verbose=True)
     success, res = lh.test_conn()
     print(res.content)
     assert success == True
 
 
 def test_connection_invalid():
-    lh = Forwarder(token=invalid_token, api_url=valid_api_url)
+    lh = Forwarder(token=invalid_token, api_url=valid_api_url, verbose=True)
     success, res = lh.test_conn()
     print(res.content)
     assert success == False
