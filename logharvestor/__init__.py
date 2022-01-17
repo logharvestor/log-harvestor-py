@@ -1,11 +1,6 @@
-"""forwarder
-"""
+"""Log-Harvestor-Py"""
 from configparser import ConfigParser
 from importlib import resources
-
-
-# Log Harvestor's Python Package (log-harvestor-py)
-__version__ = "0.0.7"
 
 # Read Config
 cfg = ConfigParser()
